@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贪吃蛇小游戏</title>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right,
+                    #ffa857,
+                    #e8ffaf,
+                    #f9cdff,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc);
+            display:flex;
+            flex-direction:inherit;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            background-image: linear-gradient(to bottom right,
+                    #ffa857,
+                    #e8ffaf,
+                    #f9cdff,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc);
+            display:flex;
+            flex-direction:inherit;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            display: block;
+            margin: auto;
+            position:relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+
+<script>
+    var canvas = document.getElementById("gameCanvas");
+    var gridSize = 20;
+    canvas.width = window.innerWidth-window.innerWidth%gridSize;
+    canvas.height = window.innerHeight-window.innerHeight%gridSize;
+    var gridWidth = canvas.width / gridSize;
+    var gridHeight = canvas.height / gridSize;
+    var ctx = canvas.getContext("2d");
+    document.addEventListener("keydown", direction);
+
+    var result = "WIN";
+    var gameflag = 1;
+    var snake = [];
+    var bullet = [];
+    var timer2 = 1;
+
+    snake[0] = {
+      x: 10 * gridSize,
+      y: 10 * gridSize
+    };
+
+    bullet[0] = {
+      x: 25 * gridSize,
+      y: 25 * gridSize
+    };
+
+    var food = {
+        x: 5 * gridSize,
+        y: 5 * gridSize
+    };
+
+    var door = {
+        x1: 15 * gridSize,
+        y1: 15 * gridSize,
+        x2: 20 * gridSize,
+        y2: 20 * gridSize
+    };
+
+    var esc = {
+        x: 25*gridSize,
+        y: 25*gridSize
+    };
+
+
+
+    var score = 0;
+    var d;
+    var s=100;
+
+    food = getFood(),esc = getFood(),door = getdoor();
+    bullet[0]=getFood();
+
+
+
+
+    
+
+
+    function direction(event) {
+        var key = event.keyCode;
+        switch (key) {
+            case 65:
+                if (d !== "RIGHT") {
+                    d = "LEFT";
+                }
+                break;
+            case 87:
+                if (d !== "DOWN") {
+                    d = "UP";
+                }
+                break;
+            case 68:
+                if (d !== "LEFT") {
+                    d = "RIGHT";
+                }
+                break;
+            case 83:
+                if (d !== "UP") {
+                    d = "DOWN";
+                }
+                break;
+            case 32:
+                if(s !== 100) s=100;
+                else if(s !==60) s=60;
+                break;
+            case 13:
+                result = "WIN";
+                while(snake.length>=2){
+                    snake.pop();
+                }
+                break;
+            
+        }
+    }
+
+
+    function draw() {
+        timer2 = 1-timer2;
+        if(gameflag === 1){
+            move();
+            canvas.width = window.innerWidth-window.innerWidth%gridSize;
+            canvas.height = window.innerHeight-window.innerHeight%gridSize;
+            var gridWidth = canvas.width / gridSize;
+            var gridHeight = canvas.height / gridSize;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0; i < snake.length; i++) {
+                ctx.fillStyle = (i === 0) ? "green" : "white";
+                if(i === 0) ctx.fillRect(snake[i].x, snake[i].y, gridSize - 2, gridSize - 2);
+                ctx.strokeStyle = "black";
+                ctx.strokeRect(snake[i].x, snake[i].y, gridSize - 2, gridSize - 2);
+            }
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(food.x, food.y, gridSize - 2, gridSize - 2);
+
+            ctx.fillStyle = "blue";
+            ctx.fillRect(door.x1, door.y1, gridSize - 2,  gridSize - 2);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(door.x2, door.y2, gridSize - 2,  gridSize - 2);
+            
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(esc.x, esc.y, gridSize - 2, gridSize - 2);
+            
+            
+            for (var i = 0; i < bullet.length; i++) {
+                ctx.fillStyle = "black";
+                ctx.fillRect(bullet[i].x, bullet[i].y, gridSize - 5, gridSize - 5);
+            }
+
+            result = collision();
+            if (result === "LOSE") {
+                gameflag = 0;
+                window.alert("你的分数是"+score+",按下Enter从头开始");
+            }
+
+        }
+        else{
+            reset();
+        }
+
+        setTimeout(draw, s);
+    }
+
+    function move() {
+        var head = {x: snake[0].x, y: snake[0].y};
+        var tbullet = {x:10*gridSize,y:10*gridSize};
+
+        if (head.x === food.x && head.y === food.y) {
+            food = getFood();
+            score++;
+            tbullet = getFood();
+            bullet.unshift(tbullet);
+            if(score%5===1) door = getdoor();
+        } else {
+            snake.pop();
+        }
+
+        
+
+        if (head.x === door.x1 && head.y === door.y1) {
+            
+            head.x=door.x2;
+            head.y=door.y2;
+        } 
+        else if (head.x === door.x2 && head.y === door.y2) {
+            
+            head.x=door.x1;
+            head.y=door.y1;
+
+        } 
+
+        if(head.x === esc.x && head.y === esc.y){
+            location.href="../index.htm";
+            gameflag = 0 ;
+            //location.href="https://www.bilibili.com/";
+            //location.href="https://autopatchcn.yuanshen.com/client_app/download/launcher/20241112150944_i9NWOyFNLxQSbQEp/mihoyo/yuanshen_setup_202411101324.exe";
+            return;
+
+        }
+
+
+
+
+        switch (d) {
+            case "LEFT":
+                if(head.x>=gridSize) head.x -= gridSize;
+                else if(head.x<gridSize) head.x = canvas.width-gridSize;
+                break;
+            case "UP":
+                if(head.y>=gridSize) head.y -= gridSize;
+                else if(head.y<gridSize) head.y = canvas.height-gridSize;
+                break;
+            case "RIGHT":
+                if(head.x<canvas.width-gridSize) head.x += gridSize;
+                else if(head.x>=canvas.width-gridSize) head.x = 0;
+                break;
+            case "DOWN":
+                if(head.y<canvas.height-gridSize) head.y += gridSize;
+                else if(head.y>=canvas.height-gridSize) head.y = 0;
+                break;
+        }
+        snake.unshift(head);
+
+        
+        for(var i=0;i<bullet.length;i++){
+            if(timer2===1){
+                if(Math.abs(snake[0].x-bullet[i].x)>=Math.abs(snake[0].y-bullet[i].y)){
+                    if(Math.abs(snake[0].x-bullet[i].x)!==0){
+                        var delta = Math.abs(snake[0].x-bullet[i].x)/(snake[0].x-bullet[i].x)*gridSize;
+                        var flag = true;
+                        for(var j=0;j<bullet.length;j++){
+                            if(j!==i&&(bullet[i].x+delta==bullet[j].x&&bullet[i].y==bullet[j].y)) flag=false;
+                        }
+                        if(flag) bullet[i].x+=delta;
+                        
+                    }
+                }
+                else{
+                    var delta = Math.abs(snake[0].y-bullet[i].y)/(snake[0].y-bullet[i].y)*gridSize;
+                    var flag = true;
+                        for(var j=0;j<bullet.length;j++){
+                            if(j!==i&&(bullet[i].y+delta==bullet[j].y&&bullet[i].x==bullet[j].x)) flag=false;
+                        }
+                        if(flag) bullet[i].y+=delta;
+
+                }
+            }
+            
+        }
+
+        
+    }
+
+    function collision() {
+        var head = snake[0];
+
+        for (var i = 1; i < snake.length; i++) {
+            if (head.x === snake[i].x && head.y === snake[i].y) {
+                return "LOSE";
+            }
+        }
+
+        for (var i = 0; i < bullet.length; i++) {
+            if (head.x === bullet[i].x && head.y === bullet[i].y) {
+                return "LOSE";
+            }
+        }
+        return "WIN";
+    }
+
+    function getFood() {
+        var x, y;
+        do {
+            x = Math.floor(Math.random() * gridWidth) * gridSize;
+            y = Math.floor(Math.random() * gridHeight) * gridSize;
+        } while (isPartOfSnake(x, y));
+        return {x: x, y: y};
+    }
+
+    function getdoor() {
+        var x1,y1,x2,y2;
+        do {
+            x1 = Math.floor(Math.random() * gridWidth) * gridSize;
+            y1 = Math.floor(Math.random() * gridHeight) * gridSize;
+
+            do{
+                x2 = Math.floor(Math.random() * gridWidth) * gridSize;
+            }
+            while(x2===x1);
+            do{
+                y2 = Math.floor(Math.random() * gridHeight) * gridSize;
+            }while(y2===y1);
+            
+            
+        } while (isPartOfSnake(x1, y1)||isPartOfSnake(x2,y2));
+        return {x1: x1, y1: y1, x2: x2, y2: y2};
+    }
+
+    function isPartOfSnake(x, y) {
+        for (var i = 0; i < snake.length; i++) {
+            if (snake[i].x === x && snake[i].y === y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function reset(){
+        if(result==="WIN"){
+            gameflag=1;
+            while(snake.length>=2){
+                snake.pop();
+            }
+            while(bullet.length>=2){
+                bullet.pop();
+            }
+            bullet[0] = getFood();
+            d=false;
+            score=0;
+            s=100;
+        }
+    }
+    
+
+    draw();
+
+
+
+</script>
+
+
+</body>
+</html>

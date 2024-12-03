@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head>
+        <title>ABOUT THIS WEB</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            header{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px 100px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #9263df;
+                z-index: 20;
+                opacity: 0.8;
+            }
+            header ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+
+            header ul li{
+                list-style: none;
+                left: auto;
+                color: #fff;
+            }
+
+            header ul li span{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #ffbbff;
+                font-size: 30px;
+                border-radius: 20px;
+                font-weight: 900;
+            }
+            
+            header ul li a{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #fff;
+                border-radius: 20px;
+            }
+
+            header ul li a:hover{
+                background: #fff;
+                color: #ffbbff;
+            }
+
+            body{
+                justify-content: center;
+                align-items: center;
+                background-color: #fffaff;
+                background-position: center;
+                background-size: cover;
+                height: 100%;
+                background-attachment: fixed;
+            }
+
+
+            .shell{
+                height: 100vh;
+                overflow-x: hidden;
+                perspective: 3px;
+            }
+
+            .shell div{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-style: 30px;
+                letter-spacing: 2px;
+            }
+
+            .image{
+                transform: translateZ(-1px) scale(1.6);
+                background-size: cover;
+                height: 100vh;
+                z-index: -1;
+            }
+            
+            .text{
+                height: 50vh;
+                background-color: #fff;
+                z-index: 2;
+            }
+
+            .text h1{
+                text-align: center;
+                color: black;
+                z-index: 2;
+            }
+
+            .heading{
+                z-index: -1;
+                transform: translateY(-30vh) translateZ(1px);
+                color: #fff;
+                font-size: 30px;
+                    
+            }
+        </style>
+    </head>
+
+    <header>
+        <ul>
+            <li><span>ABOUT THIS WEB</span></li>
+            <li><a id="tohome" href="../index.htm">HOME</a></li>
+            <li><a id="topicture" href="./2.htm">GALLERY</a></li>
+            <li><a id="tomusic" href="./3.htm">CHOOSE MUSIC</a></li>
+            <li><a id="to4" href="./4.htm">INTRODUCE</a></li>
+        </ul>
+    </header>
+
+    <body id="boddy">
+        <audio id="audio" src="./audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3" loop="loop"></audio>
+        <div class="shell">
+            <div class="image" style="background-image: url('../images/10c.png');"></div>
+            <div class="heading">
+                <h1 style="color: #ffeda7;">作者</h1>
+            </div>
+            <div class="text">
+                <h1>ZEENliang<br>如有反馈请发信至我的邮箱:<br>2692071971@qq.com</h1>
+            </div>
+
+            <div class="image" style="background-image: url('../images/2b.png');"></div>
+            <div class="heading">
+                <h1 style="color: #a8ffa0;">HOME</h1>
+            </div>
+            <div class="text">
+                <h1>HOME一个用来听歌的界面，也是一个用来导航的界面。<br>阅览者可以通过点击小球跳转到相应的界面，也可以点击中间的小球暂停音乐。</h1>
+            </div>
+
+            <div class="image" style="background-image: url('../images/27c.png');"></div>
+            <div class="heading">
+                <h1 style="color: #afe4ff;">GALLERY</h1>
+            </div>
+            <div class="text">
+                <h1>GALLERY展示了mygo，gbc，ZTMY，孤独摇滚的许多美图供阅览者欣赏。<br>希望这些好看的照片能让你体会到少女乐队的美好</h1>
+            </div>
+
+            <div class="image" style="background-image: url('../images/20c.png');"></div>
+            <div class="heading">
+                <h1 style="color: #fbe6ff;">CHOOSE MUSIC</h1>
+            </div>
+            <div class="text">
+                <h1>阅览者可以在CHOOSE MUSIC界面通过滚轮和鼠标切换背景音乐。<br>本网站实装了一共五首少女乐队的歌曲，三首JPOP歌曲，以及两首国摇。<br>希望你能喜欢</h1>
+            </div>
+
+            <div class="image" style="background-image: url('../images/9c.png');"></div>
+            <div class="heading">
+                <h1 style="color: #bf7fff;">INTRODUCE</h1>
+            </div>
+            <div class="text">
+                <h1>INTRODUCE界面更加详细的介绍了本网站提到的各个乐队<br>帮助你了解一些细节以判断自己是否想要继续了解</h1>
+            </div>
+
+            <div class="image" style="background-image: url('../images/17c.png');"></div>
+            <div class="heading">
+                <h1>结语</h1>
+            </div>
+            <div class="text">
+                <h1>感谢你的阅览，希望你玩的开心~~~</h1>
+            </div>
+            
+            <div class="image" style="background-image: url('../images/16c.png');"></div>
+            <div class="image" style="background-image: url('../images/4b.jpg');"></div>
+            <div class="image" style="background-image: url('../images/31c.png');"></div>
+
+
+        </div>
+
+    </body>
+
+
+
+    <script>
+        const params = new URLSearchParams(location.search); 
+        var backing = document.getElementById("boddy");
+                var indx = params.get('song');
+                var home = document.getElementById("tohome");
+                var intro = document.getElementById("to4");
+                var picture = document.getElementById("topicture");
+                var tomusic = document.getElementById("tomusic");
+                
+                var music = document.getElementById("audio");
+                if(params.get('song')===null){
+                    indx = 1;
+                    indx++;
+                    indx--;
+                    music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                    backing.style.backgroundImage = "url('../images/1b.jpg')";
+                } 
+                else {
+                    indx++;
+                    indx--;
+                    switch(indx){
+                    case 1:
+                        music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        backing.style.backgroundImage = "url('../images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="../audio/結束バンド - 星座になれたら.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                        break;
+                    case 10:
+                        music.src="../audio/草东没有派对 - 但.mp3";
+                        break;   
+                    }
+                }
+                music.play();
+                home.href = "../index.htm?song="+indx;
+                intro.href = "./4.htm?song="+indx;
+                picture.href = "./2.htm?song="+indx;
+                tomusic.href = "./3.htm?song="+indx;  
+    </script>
+</html>

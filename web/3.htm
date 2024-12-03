@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head>
+        <title>CHOOSE MUSIC</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style>
+
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+     
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                width: 100%;
+                height: 100%;
+                transition: ease-in-out;
+                background-size: cover;
+                background-image: url("../images/1b.jpg");
+                background-position-x: 100%;
+            }
+
+            .box{
+                position: absolute;
+                display: flex;
+                align-items: center;
+            }
+
+            .box .item{
+                position: absolute;
+                top:calc(50% - 300px);
+                left: calc(50% - 200px);
+                width: 400px;
+                height: 600px;
+                transition: 0.25s;
+                box-shadow: 0 0 50px rgba(0,0,0,0.5);
+                user-select: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5em;
+                font-family: consolas;
+                font-weight: 800;
+                color: #fff;
+                opacity: 0;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .box .item:nth-child(1){
+                transform: translate3d(-500px,0,0) scale(0.8);
+                opacity: 1;
+                z-index: 1;
+            }
+            .box .item:nth-child(2){
+                transform: translate3d(-500px,0,0) scale(0.8);
+                opacity: 1;
+                z-index: 2;
+            }
+            .box .item:nth-child(3){
+                transform: translate3d(-300px,0,0) scale(0.9);
+                opacity: 1;
+                z-index: 3;
+                font-size: 6em;
+            }
+            .box .item:nth-child(4){
+                transform: translate3d(0px,0,0) scale(1);
+                opacity: 1;
+                z-index: 4;
+                color: #fff;
+                font-size: 8em;
+            }
+            .box .item:nth-child(5){
+                transform: translate3d(300px,0,0) scale(0.9);
+                opacity: 1;
+                z-index: 3;
+                font-size: 6em;
+            }
+            .box .item:nth-child(6){
+                transform: translate3d(500px,0,0) scale(0.8);
+                opacity: 1;
+                z-index: 2;
+            }
+            .box .item:nth-child(7){
+                transform: translate3d(500px,0,0) scale(0.8);
+                opacity: 1;
+                z-index: 1;
+            }
+
+
+
+            header{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px 100px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #9263df;
+                z-index: 1;
+                opacity: 0.8;
+            }
+            header ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+
+            header ul li{
+                list-style: none;
+                left: auto;
+                color: #fff;
+            }
+
+            header ul li span{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #ffbbff;
+                font-size: 30px;
+                border-radius: 20px;
+                font-weight: 900;
+            }
+            
+            header ul li a{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #fff;
+                border-radius: 20px;
+            }
+
+            header ul li a:hover{
+                background: #fff;
+                color: #ffbbff;
+            }
+
+            body>span{
+                color: #fff;
+                position: fixed;
+                top: 75%;
+                z-index: 10;
+                font-size: 60px;
+            }
+
+
+        </style>
+    </head>
+
+    <header>
+            <ul>
+                <li><span>CHOOSE MUSIC</span></li>
+                <li><a id="tohome" href="../index.htm">HOME</a></li>
+                <li><a id="togame" href="./1.htm">ABOUT THIS WEB</a></li>
+                <li><a id="topicture" href="./2.htm">GALLERY</a></li>
+                <li><a id="tointroduce" href="./4.htm">INTRODUCE</a></li>
+            </ul>
+    </header>
+
+
+    <body id="boddy">
+
+        
+        <span id="songname">12132</span>
+        <div class="box"></div>
+        
+        
+        <audio id="player" loop="loop"></audio>
+        
+        
+        
+        
+        <script>
+            const params = new URLSearchParams(location.search); 
+            var indx = params.get('song');
+            var sname = document.getElementById("songname");
+
+            
+            
+            var music = document.getElementById("player");
+            var backing = document.getElementById("boddy");
+            var home = document.getElementById("tohome");
+            var game = document.getElementById("togame");
+            var picture = document.getElementById("topicture");
+            var introduce = document.getElementById("tointroduce");
+
+            
+            if(params.get('song')===null){
+                indx = 1;
+                indx++;
+                indx--;
+                music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                backing.style.backgroundImage = "url('../images/1b.jpg')";
+            } 
+            let box = document.querySelector('.box');
+            for(let i=1; i<=10; i++){
+                let div = document.createElement('div');
+                div.className = 'item';
+                switch(i){
+                    case 1:
+                        div.style.backgroundImage = "url('../images/1a.jpg')";
+                        break;
+                    case 2:
+                        div.style.backgroundImage = "url('../images/2a.jpg')";
+                        break;
+                    case 3:
+                        div.style.backgroundImage = "url('../images/3a.jpg')";
+                        break;
+                    case 4:
+                        div.style.backgroundImage = "url('../images/4a.jpg')";
+                        break;
+                    case 5:
+                        div.style.backgroundImage = "url('../images/5a.jpg')";
+                        break;
+                    case 6:
+                        div.style.backgroundImage = "url('../images/6a.jpg')";
+                        break;
+                    case 7:
+                        div.style.backgroundImage = "url('../images/7a.jpg')";
+                        break;
+                    case 8:
+                        div.style.backgroundImage = "url('../images/8a.jpg')";
+                        break;
+                    case 9:
+                        div.style.backgroundImage = "url('../images/9a.jpg')";
+                        break;
+                    case 10:
+                        div.style.backgroundImage = "url('../images/10a.jpg')";
+                        break;
+                    
+                }
+                box.appendChild(div);
+            }
+
+            indx++;
+            indx--;
+
+            switch(indx){
+                case 1:
+                    music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                    sname.textContent="MyGO!!!!! - 《春日影》";
+                    backing.style.backgroundImage = "url('../images/1b.jpg')";
+                    break;
+                case 2:
+                    music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                    sname.textContent="ずっと真夜中でいいのに。 - 《あいつら全員同窓会》";
+                    backing.style.backgroundImage = "url('../images/2b.png')";
+                    break;
+                case 3:
+                    music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                    sname.textContent="ずっと真夜中でいいのに。 - 《ミラーチューン》";
+                    backing.style.backgroundImage = "url('../images/2b.png')";
+                    break;
+                case 4:
+                    music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                    sname.textContent="ずっと真夜中でいいのに。 - 《海馬成長痛》";
+                    backing.style.backgroundImage = "url('../images/2b.png')";
+                    break;
+                case 6:
+                    music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                    sname.textContent="結束バンド - 《ギターと孤独と蒼い惑星》";
+                    backing.style.backgroundImage = "url('../images/3b.jpg')";
+                    break;
+                case 5:
+                    music.src="../audio/結束バンド - 星座になれたら.mp3";
+                    sname.textContent="結束バンド - 《星座になれたら》";
+                    backing.style.backgroundImage = "url('../images/3b.jpg')";
+                    break;
+                case 7:
+                    music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                    sname.textContent="トゲナシトゲアリ - 《雑踏、僕らの街》";
+                    backing.style.backgroundImage = "url('../images/4b.jpg')";
+                    break;
+                case 8:
+                    music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                    sname.textContent="トゲナシトゲアリ - 《爆ぜて咲く》";
+                    backing.style.backgroundImage = "url('../images/4b.jpg')";
+                    break;
+                case 9:
+                    music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                    sname.textContent="万能青年旅店 - 《秦皇岛》";
+                    backing.style.backgroundColor="black";
+                    break;
+                case 10:
+                    music.src="../audio/草东没有派对 - 但.mp3";
+                    sname.textContent="草东没有派对 - 《但》";
+                    break;
+                    
+                }
+            music.play();
+            
+
+
+            for(var i=0;i<3;i++)movePrev();
+            for(var i=0;i<indx-1;i++)moveNext();
+
+            function moveNext(){
+                let items = document.querySelectorAll('.item');
+                box.appendChild(items[0]);
+            }
+            function movePrev(){
+                let items = document.querySelectorAll('.item');
+                box.prepend(items[items.length - 1]);
+            }
+
+            window.addEventListener('wheel',function(event1){
+                if(event1.deltaY > 0){
+                    moveNext();
+                    indx++;
+                    if(indx===11) indx=1;
+                }
+                else{
+                    movePrev();
+                    indx--;
+                    if(indx===0) indx=10;
+                }
+
+                switch(indx){
+                    case 1:
+                        music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        sname.textContent="MyGO!!!!! - 春日影";
+                        backing.style.backgroundImage = "url('../images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《あいつら全員同窓会》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《ミラーチューン》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《海馬成長痛》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="../audio/結束バンド - 星座になれたら.mp3";
+                        sname.textContent="結束バンド - 《星座になれたら》";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        sname.textContent="結束バンド - 《ギターと孤独と蒼い惑星》";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        sname.textContent="トゲナシトゲアリ - 《雑踏、僕らの街》";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        sname.textContent="トゲナシトゲアリ - 《爆ぜて咲く》";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                        sname.textContent="万能青年旅店 - 《秦皇岛》";
+                        backing.style.backgroundColor="black";
+                        break;
+                    case 10:
+                        music.src="../audio/草东没有派对 - 但.mp3";
+                        sname.textContent="草东没有派对 - 《但》";
+                        backing.style.backgroundColor="black";
+                        break;
+                    
+                }
+
+                music.play();
+                home.href = "../index.htm?song="+indx;
+                game.href = "./1.htm?song="+indx;
+                picture.href = "./2.htm?song="+indx;
+                introduce.href = "./4.htm?song="+indx;
+
+            })
+            
+            //document.getElementById(music).src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+            
+            window.addEventListener("click",function(event2){
+                if(event2.clientY <= (window.innerWidth/15)) return;
+                if(event2.clientX >= (window.innerWidth/2)){
+                    moveNext();
+                    indx++;
+                    if(indx===11) indx=1;
+                    
+                }
+                else{
+                    movePrev();
+                    indx--;
+                    if(indx===0) indx=10;
+                }
+                switch(indx){
+                    case 1:
+                        music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        sname.textContent="MyGO!!!!! - 《春日影》";
+                        backing.style.backgroundImage = "url('../images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《あいつら全員同窓会》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《ミラーチューン》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        sname.textContent="ずっと真夜中でいいのに。 - 《海馬成長痛》";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="../audio/結束バンド - 星座になれたら.mp3";
+                        sname.textContent="結束バンド - 《星座になれたら》";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        sname.textContent="結束バンド - 《ギターと孤独と蒼い惑星》";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        sname.textContent="トゲナシトゲアリ - 《雑踏、僕らの街》";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        sname.textContent="トゲナシトゲアリ - 《爆ぜて咲く》";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                        sname.textContent="万能青年旅店 - 《秦皇岛》";
+                        backing.style.backgroundColor="black";
+                        break;
+                    case 10:
+                        music.src="../audio/草东没有派对 - 但.mp3";
+                        sname.textContent="草东没有派对 - 《但》";
+                        break;
+                    
+                }
+                music.play();
+                home.href = "../index.htm?song="+indx;
+                game.href = "./1.htm?song="+indx;
+                picture.href = "./2.htm?song="+indx;
+                introduce.href = "./4.htm?song="+indx;
+            })
+
+            home.href = "../index.htm?song="+indx;
+            game.href = "./1.htm?song="+indx;
+            picture.href = "./2.htm?song="+indx;
+            introduce.href = "./4.htm?song="+indx;
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>PICTURE WALL</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            header{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px 100px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #9263df;
+                z-index: 20;
+                opacity: 0.8;
+            }
+            header ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+
+            header ul li{
+                list-style: none;
+                left: auto;
+                color: #fff;
+            }
+
+            header ul li span{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #ffbbff;
+                font-size: 30px;
+                border-radius: 20px;
+                font-weight: 900;
+            }
+            
+            header ul li a{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #fff;
+                border-radius: 20px;
+            }
+
+            header ul li a:hover{
+                background: #fff;
+                color: #ffbbff;
+            }
+
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fffaff;
+                background-position: center;
+                background-size: cover;
+                height: 100%;
+                background-attachment: fixed;
+
+            }
+
+            main{
+                display: grid;
+                gap:2rem;
+                grid-template-columns: repeat(3,500px);
+                overflow-y: hidden;
+                padding: 50px;
+            }
+
+            section{
+                display: flex;
+                gap: 2rem;
+                flex-direction: column;
+            }
+
+
+            section:nth-child(1),
+            section:nth-child(3){
+                animation: scroller linear;
+                animation-timeline: scroll(root);
+                flex-direction: column-reverse;
+                translate: 0% calc(-100% + 100vh);
+            }
+
+            section img{
+                
+                box-shadow: 0 0 10px #0002;
+                border-radius: 5px;
+                transition: .3s;   
+            }
+
+            section img:hover{
+                transform: scale(1.20);
+                box-shadow: 0 0 20px rgba(150,50,50,0.5);
+                z-index: 10;
+            }
+            
+            @keyframes scroller {
+                to{
+                    translate: 0% calc(100% - 100vh);
+                }
+            }
+
+        </style>
+        
+    </head>
+
+    <header>
+        <ul>
+            <li><span>GALLERY</span></li>
+            <li><a id="tohome" href="../index.htm">HOME</a></li>
+            <li><a id="togame" href="./1.htm">ABOUT THIS WEB</a></li>
+            <li><a id="topicture" href="./3.htm">CHOOSE MUSIC</a></li>
+            <li><a id="to4" href="./4.htm">INTRODUCE</a></li>
+        </ul>
+    </header>
+    
+    <body id="boddy">
+        <main>
+            <section>
+                <img src="../images/1c.png">
+                <img src="../images/3c.png">
+                <img src="../images/2c.png">
+                <img src="../images/4c.png">
+                <img src="../images/5c.png">
+                <img src="../images/6c.png">
+                <img src="../images/7c.png">
+                <img src="../images/8c.png">
+                <img src="../images/9c.png">
+                <img src="../images/10c.png">
+            </section>
+            <section>
+                <img src="../images/11c.png">
+                <img src="../images/13c.png">
+                <img src="../images/12c.png">
+                <img src="../images/14c.png">
+                <img src="../images/15c.png">
+                <img src="../images/16c.png">
+                <img src="../images/17c.png">
+                <img src="../images/18c.png">
+                <img src="../images/19c.png">
+                <img src="../images/20c.png">
+            </section>
+            <section>
+                <img src="../images/21c.png">
+                <img src="../images/23c.png">
+                <img src="../images/22c.png">
+                <img src="../images/24c.png">
+                <img src="../images/25c.png">
+                <img src="../images/26c.png">
+                <img src="../images/27c.png">
+                <img src="../images/28c.png">
+                <img src="../images/29c.png">
+                <img src="../images/30c.png">
+            </section>
+        </main>
+        <audio id="audio" src="./audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3" loop="loop"></audio>
+    </body>
+    <script>
+        const params = new URLSearchParams(location.search); 
+                var backing = document.getElementById("boddy");
+                var indx = params.get('song');
+                var home = document.getElementById("tohome");
+                var game = document.getElementById("togame");
+                var picture = document.getElementById("topicture");
+                var to4 = document.getElementById("to4");
+                
+                var music = document.getElementById("audio");
+
+                if(params.get('song')===null){
+                    indx = 1;
+                    indx++;
+                    indx--;
+                    music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                    backing.style.backgroundImage = "url('../images/1b.jpg')";
+                } 
+                else {
+                    indx++;
+                    indx--;
+                    switch(indx){
+                    case 1:
+                        music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        backing.style.backgroundImage = "url('../images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="../audio/結束バンド - 星座になれたら.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                        break;
+                    case 10:
+                        music.src="../audio/草东没有派对 - 但.mp3";
+                        break;   
+                    }
+                }
+                music.play();
+                home.href = "../index.htm?song="+indx;
+                game.href = "./1.htm?song="+indx;
+                picture.href = "./3.htm?song="+indx;
+                to4.href = "./4.htm?song="+indx;
+    </script>
+</html>

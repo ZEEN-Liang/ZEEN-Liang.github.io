@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html>
+    <title>INTRODUCE</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            header{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px 100px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #9263df;
+                z-index: 20;
+                opacity: 0.8;
+            }
+            header ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+
+            header ul li{
+                list-style: none;
+                left: auto;
+                color: #fff;
+            }
+
+            header ul li span{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #ffbbff;
+                font-size: 30px;
+                border-radius: 20px;
+                font-weight: 900;
+            }
+            
+            header ul li a{
+                text-decoration: none;
+                padding: 6px 15px;
+                color: #fff;
+                border-radius: 20px;
+            }
+
+            header ul li a:hover{
+                background: #fff;
+                color: #ffbbff;
+            }
+
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fffaff;
+                background-position: center;
+                background-size: cover;
+                height: 100%;
+                background-attachment: fixed;
+            }
+
+            .shell{
+                width: 100%;
+                position: relative;
+                padding: 200px 0;
+                transition: 0.3s ease 0s;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            .shell::before{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                content: "";
+            }
+
+            .header{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 80px;
+                position: relative;
+            }
+
+            .title{
+                color: #fff;
+                font-size: 46px;
+                font-weight: normal;
+                margin: 0;
+            }
+
+            .timeline{
+                display: flex;
+                margin:0 auto;
+                flex-wrap: wrap;
+                flex-direction: column;
+                max-width: 1400px;
+                position: relative;
+            }
+
+            .content-title{
+                font-weight: normal;
+                font-size: 66px;
+                margin: -10px 0 0 0;
+                transition: 0.4s;
+                padding: 0 10px;
+                box-sizing: border-box;
+                color: #fff;
+            }
+
+            .content-desc{
+                text-indent: 4ch;
+                margin: 0;
+                font-size: 20px;
+                box-sizing: border-box;
+                color: rgb(255, 255, 255);
+                line-height: 25px;
+            }
+
+            .timeline::before{
+                position: absolute;
+                left: 50%;
+                width: 2px;
+                height: 100%;
+                margin-left: -1px;
+                content: "";
+                background: rgba(255,255,255,0.7);
+            }
+
+            .item{
+                padding: 60px 0;
+                opacity: 1;
+                transition: 0.5s;
+                box-sizing: border-box;
+                width: calc(50% - 40px);
+                display: flex;
+                position: relative;
+                transform: translateY(-80px);
+            }
+
+            .item::before{
+                content: attr(data-text);
+                letter-spacing: 3px;
+                width: 100%;
+                position: absolute;
+                color: rgba(255,255,255,0.5);
+                font-size: 13px;
+                border-left: 2px solid rgba(255,255,255,0.5);
+                top: 70%;
+                margin-top: -5px;
+                padding-left: 15px;
+                opacity: 1;
+                right: calc(-100% - 56%);
+                font: 900 20px '';
+                letter-spacing: 5px;
+            }
+
+            .item:nth-child(even){
+                align-self: flex-end;
+            }
+
+            .item:nth-child(even)::before{
+                right: auto;
+                text-align: right;
+                left: calc(-100% - 56px);
+                padding-left: 0%;
+                border-left: none;
+                border-right: 2px solid rgba(255,255,255,0.5);
+                padding-right: 15px;
+            }
+
+            .item--active{
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0px);
+            }
+            
+            .item--active::before{
+                top: 50%;
+                transition: 0.3s all 0.2s;
+                opacity: 1;
+            }
+
+            .item--active .content-title{
+                margin:  -50px 0 20px 0;
+            }
+
+            .img{
+                max-width: 100%;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.4);
+            }
+
+            .subtitle{
+                color: rgba(255, 255, 255, 0.969);
+                font-size: 16px;
+                letter-spacing: 5px;
+                margin: 10px 0 0 0;
+                font-weight: normal;
+            }
+
+            .footer{
+                padding: 95px 0;
+                text-align: center;
+            }
+
+            .footer a{
+                color: #999;
+                display: inline-block;
+            }
+
+            @media only screen and (max-width: 767px){
+                .item{
+                    align-self: baseline !important;
+                    width: 100%;
+                    padding: 0 30px 150px 80px;
+                }
+                
+                .item::before{
+                    left: 10px !important;
+                    padding: 0 !important;
+                    top: 50px;
+                    text-align: center !important;
+                    width: 60px;
+                    border: none !important;
+                }
+
+                .item:last-child{
+                    padding-bottom: 40px;
+                }
+            }
+
+            @media only screen and (max-width: 767px){
+                .timeline:before{
+                    left: 40px;
+                }
+            }
+
+
+        </style>
+
+    </head>
+
+    <header>
+            <ul>
+                <li><span>INTRODUCE</span></li>
+                <li><a id="tohome" href="../index.htm">HOME</a></li>
+                <li><a id="togame" href="./1.htm">ABOUT THIS WEB</a></li>
+                <li><a id="topicture" href="./2.htm">GALLERY</a></li>
+                <li><a id="tomusic" href="./3.htm">CHOOSE MUSIC</a></li>
+            </ul>
+    </header>
+
+
+    <body id="boddy">
+        <div class="shell" id="shell">
+            <div class="header">
+                <h2 class="title">众乐队的介绍</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="item" data-text="为什么要演奏春日影！！！">
+                    <div class="content">
+                        <img src="../images/19c.png" alt="" class="img">
+                        <h2 class="content-title">MYGO!!!</h2>
+                        <p class="content-desc">
+                            MyGO!!!!!是多媒体企划“BanG Dream!”中登场架空的5人女子乐队，
+                            以及为她们配音的声优，在现实中以乐队形式真实存在的5人女子声优组合，
+                            所属唱片公司为Bushiroad Music。各位声优也在现实中使用作品角色相同的乐器。
+                            即便迷茫也要继续前进，五名少女组成了乐队。初中时因为乐队解散而远离了音乐的灯，
+                            因为与爱音的相遇而再次开始了乐队活动。成员们的个性各不相同，也经常产生摩擦。
+                            但是，她们都想站在舞台上。即便思念得不到回应，即便寻找不到答案，
+                            迷路的少女们也仍会不断前进。
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="timeline">
+                <div class="item" data-text="你知道的，ACAね是天才歌手，我很早就知道ACAね，
+                这家伙强的不可思议，suis是个很棒的家伙，ikura在YOASOBI可以产生很好化学反应，
+                有时候做出决定很难，经过许多日夜思考，我决定加入小刺猬，我已经迫不及待想听到她们的新歌了
+                至于什么MyGO、gbc，祝你们幸福">
+                    <div class="content">
+                        <img src="../images/31c.png" alt="" class="img">
+                        <h2 class="content-title">ずっと真夜中でいいのに。</h2>
+                        <p class="content-desc">
+                            永远是深夜有多好。（ずっと真夜中でいいのに。），日本音乐组合，
+                            简称“ずとまよ”，由ACAね（アカネ）担任主唱及词曲创作者，其余成员不固定。
+                            所属的经纪公司是环球音乐旗下的百代唱片公司。
+                            2018年6月，在YouTube发布了组合处女作《秒針を噛む》的MV，
+                            并由此正式步入乐坛。11月，发行组合的首张迷你专辑《正しい偽りからの起床》，
+                            从而正式出道。2019年10月，发行组合的首张录音室专辑《潜潜话》。
+                            2020年8月，发行了她们的第三张迷你专辑《朗らかな皮膚とて不服》。
+                            11月起，举办全日本巡回演出“やきやきヤンキーツアー（炙りと燻製編）”。
+                            2021年2月，发行组合的第二张录音室专辑《ぐされ》。
+                            2022年2月，组合的第四张迷你专辑《伸び仕草懲りて暇乞い》发行
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="timeline">
+                <div class="item" data-text="我是来结束乐队的">
+                    <div class="content">
+                        <img src="../images/5c.png" alt="" class="img">
+                        <h2 class="content-title">結束バンド</h2>
+                        <p class="content-desc">
+                            纽带乐队（結束バンド），日本漫画《孤独摇滚！》及其衍生作品中登场的乐队。
+                            由吉他手后藤独、鼓手兼队长伊地知虹夏、贝斯手山田凉、主唱兼吉他手喜多郁代组成。
+                            纽带乐队是由漫画《孤独摇滚！》中的主角组成的乐队，
+                            在队长伊地知虹夏的姐姐伊地知星歌于下北泽经营的Live House“STARRY”进行活动。
+                            乐队名“纽带乐队”（結束バンド）在日文中意指束线带，其中“带”与“乐队”的日文相同，
+                            都是“バンド”。成员的姓氏皆源自于亚细亚功夫世代（ASIAN KUNG-FU GENERATION）
+                            的成员：后藤正文对应后藤独，喜多建介对应喜多郁代，伊地知洁对应伊地知虹夏，
+                            山田贵洋对应山田凉，两个乐队都活跃于下北泽。同时在三次元中，
+                            成员声优也以“纽带乐队”名义参与动画衍生的演唱会和其他音乐会。
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="timeline">
+                <div class="item" data-text="一起对世界竖起中指吧！！！">
+                    <div class="content">
+                        <img src="../images/27c.png" alt="" class="img">
+                        <h2 class="content-title">トゲナシトゲアリ</h2>
+                        <p class="content-desc">
+                            TOGENASHI TOGEARI（トゲナシトゲアリ），日本摇滚乐队，简称TOGETOGE，
+                            由主唱理名（Rina）、吉他手夕莉（Yuri）、鼓手美怜（Mirei）、键盘手凪都（Natsu）、
+                            贝斯手朱李（Shuri）组成，隶属于日本环球音乐旗下的Universal Sigma唱片公司。
+                            乐队成员由agehasprings主办的选拔试镜“Girl's Rock Audition”中选拔出来的。
+                            该乐队与电视动画《GIRLS BAND CRY》展开联动，成员们不仅为剧中角色配音，
+                            同时在现实生活中也开展乐队活动。
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="timeline">
+                <div class="item" data-text="“我在荒岛上迎接黎明。太阳初升时，忽然有十万支金喇叭齐鸣。阳光穿过透明的空气，在喑蓝色的天空飞过。在黑暗尚未褪去的海面上燃烧着十万支蜡烛。我听见天地之间钟声响了，然后十万支金喇叭又一次齐鸣。”">
+                    <div class="content">
+                        <img src="../images/9a.jpg" alt="" class="img">
+                        <h2 class="content-title">万能青年旅店</h2>
+                        <p class="content-desc">
+                            万能青年旅店，于1996年在河北省石家庄组建的摇滚乐队，
+                            由主唱兼吉他手董亚千、贝斯手姬赓、小号手史立以及鼓手冯江组成。
+                            1996年，董亚千和姬赓，组建了万能青年旅店的前身The Nico。1998年，
+                            该乐队录制了歌曲《巢穴在望》，并在1999年收录在专辑《非常次序》中。
+                            2002年底，姬赓给乐队改名为“万能青年旅店”。
+                            2006年9月，乐队凭借单曲《不万能的喜剧》获得关注。
+                            2009年，发行了乐队首张EP《万能鸵鸟驯养指南》。2010年，
+                            万能青年旅店乐队发行了第一张同名专辑《万能青年旅店》，
+                            并凭借该同名专辑获得第11届音乐风云榜最佳摇滚新人、
+                            最佳摇滚专辑以及最佳摇滚歌曲奖，2011年，
+                            获得第11届华语音乐传媒大奖最佳乐队奖。
+                            2012年7月6日起，万能青年旅店与甜梅号在北京、上海等地展开联合巡演。
+                            2015年，万能青年旅店乐队展开了“河北墨麒麟”系列演出专场。
+                            2020年12月22日，万能青年旅店乐队发表了第二张专辑《冀西南林路行》，
+                            半天内即售出20万张，两周后销售额过千万。2023年4月，
+                            万能青年旅店乐队凭借专辑《冀西南林路行》获得第12届迷笛奖年度最佳摇滚专辑，
+                            以及年度最佳摇滚乐队奖，凭借专辑歌曲《河北墨麒麟》获得年度最佳摇滚歌曲奖。
+                            2024年3月，万能青年旅店乐队开始“冀西南林路行”亚洲巡演。
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="timeline">
+                <div class="item" data-text="我的自卑胜过了所有爱我的">
+                    <div class="content">
+                        <img src="../images/10a.jpg" alt="" class="img">
+                        <h2 class="content-title">草东没有派对</h2>
+                        <p class="content-desc">
+                            草东没有派对，原名草东街派对，
+                            中国台湾摇滚乐团，由主唱兼吉他手巫堵、吉他手筑筑、贝斯手世暄与鼓手黄士玮组成。
+                            2012年，草东街派对正式成立 [1]。2014 年，草东街派对改名为草东没有派对，
+                            并陆续在网络发布《老张》、《丑》等作品。2015年，拍摄了乐团首支MV《山海》。
+                            2016年，推出乐队首张音乐专辑《丑奴儿》；同年，举行“滔滔·丙申年冬”巡回演出。
+                            2017年6月24日，获得“第28届台湾金曲奖”最佳新人奖、最佳乐团奖，
+                            而歌曲《大风吹》则获得年度歌曲奖。2019年9月27日，
+                            受邀参加巴西里约热内卢举办的2019里约摇滚音乐节。
+                            2024年6月29日，凭借《瓦合》获得第35届台湾金曲奖年度专辑、
+                            最佳华语专辑、最佳乐团奖。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="audio" src="./audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3" loop="loop"></audio>
+        
+
+    </body>
+
+
+    <script>
+        const params = new URLSearchParams(location.search); 
+        var backing = document.getElementById("boddy");
+                var indx = params.get('song');
+                var home = document.getElementById("tohome");
+                var game = document.getElementById("togame");
+                var picture = document.getElementById("topicture");
+                var tomusic = document.getElementById("tomusic");
+                
+                var music = document.getElementById("audio");
+                if(params.get('song')===null){
+                    indx = 1;
+                    indx++;
+                    indx--;
+                    music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                    backing.style.backgroundImage = "url('../images/1b.jpg')";
+                } 
+                else {
+                    indx++;
+                    indx--;
+                    switch(indx){
+                    case 1:
+                        music.src="../audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        backing.style.backgroundImage = "url('../images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="../audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="../audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="../audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        backing.style.backgroundImage = "url('../images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="../audio/結束バンド - 星座になれたら.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="../audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        backing.style.backgroundImage = "url('../images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="../audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="../audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        backing.style.backgroundImage = "url('../images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="../audio/万能青年旅店 - 秦皇岛.mp3";
+                        break;
+                    case 10:
+                        music.src="../audio/草东没有派对 - 但.mp3";
+                        break;   
+                    }
+                }
+                music.play();
+                home.href = "../index.htm?song="+indx;
+                game.href = "./1.htm?song="+indx;
+                picture.href = "./2.htm?song="+indx;
+                tomusic.href = "./3.htm?song="+indx;
+    </script>
+
+</html>

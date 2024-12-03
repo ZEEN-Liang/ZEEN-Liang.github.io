@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>zeen's web</title>
+
+    <style>
+
+        body {
+            background-image: linear-gradient(to bottom right,
+                    #ffa857,
+                    #e8ffaf,
+                    #f9cdff,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc);
+            backdrop-filter: blur(5px);
+            display:flex;
+            flex-direction:inherit;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*
+        .shell{
+            
+        }*/
+
+        .box{
+            position: absolute;
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%,-50%);
+        }
+
+        .ball1{
+            animation: float 4.5s ease-in-out infinite;
+            height: 300px;
+            width: 300px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position:relative;
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            
+            
+            z-index: -990;
+        }
+
+        .ball1>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: .5;
+        }
+
+
+
+        .ball2{
+            animation: float 4.7s ease-in-out infinite;
+            height: 150px;
+            width: 150px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position:relative;
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            
+            left: 300px;
+
+            
+            z-index: -990;
+        }
+
+        .ball2>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            transition: .5;
+            z-index: 1;
+
+        }
+
+        .ball2>span{
+            
+            box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            font-size: 25px;
+            font-weight: 800;
+            
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            height: 90%;
+            width: 100%;
+
+            top:0;
+            left: 0;
+            text-align: center;
+            padding-top: 30%;
+            text-transform: uppercase;
+        }
+
+
+
+        .ball2:hover{
+            border-color: #d7b3e3;
+            height: 200px;
+            width: 200px;
+        }
+
+        .ball2:hover img{
+            filter: blur(5px);
+        }
+
+        .ball2:hover span{
+            opacity: 1;
+            color: #ffb3e6;
+        }
+
+
+
+
+        .ball3{
+            animation: float 4.3s ease-in-out infinite;
+            height: 150px;
+            width: 150px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position: relative;
+
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            
+            left: -300px;
+
+
+            
+            z-index: -990;
+        }
+
+        .ball3>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            transition: .5;
+            z-index: 1;
+            display: flex;
+        }
+
+        .ball3>span{
+            
+            box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            font-size: 25px;
+            font-weight: 800;            
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            height: 90%;
+            width: 100%;
+
+            top:0;
+            left: 0;
+            text-align: center;
+            padding-top: 30%;
+            text-transform: uppercase;
+        }
+
+
+
+        .ball3:hover{
+            border-color: #ffba97;
+            height: 200px;
+            width: 200px;
+        }
+
+        .ball3:hover img{
+            filter: blur(5px);
+        }
+
+        .ball3:hover span{
+            opacity: 1;
+            color: #ffe1c3;
+        }
+
+        .ball4{
+            animation: float 4.9s ease-in-out infinite;
+            height: 150px;
+            width: 150px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position: relative;
+
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            
+            left: 500px;
+
+
+            
+            z-index: -990;
+        }
+
+        .ball4>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            transition: .5;
+            z-index: 1;
+
+        }
+
+        .ball4>span{
+            
+            box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            font-size: 25px;
+            font-weight: 800;            
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            height: 90%;
+            width: 100%;
+
+            top:0;
+            left: 0;
+            text-align: center;
+            padding-top: 30%;
+            text-transform: uppercase;
+        }
+
+
+
+        .ball4:hover{
+            border-color: #ff8484;
+            height: 200px;
+            width: 200px;
+        }
+
+        .ball4:hover img{
+            filter: blur(5px);
+        }
+
+        .ball4:hover span{
+            opacity: 1;
+            color: #ff8686;
+        }
+
+        .ball5{
+            animation: float 4.1s ease-in-out infinite;
+            height: 150px;
+            width: 150px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position: relative;
+
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            
+            left: -500px;
+
+
+            
+            z-index: -990;
+        }
+
+        .ball5>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            transition: .5;
+            z-index: 1;
+
+        }
+
+        .ball5>span{
+            
+            box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            font-size: 25px;
+            font-weight: 800;         
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            height: 90%;
+            width: 100%;
+
+            top:0;
+            left: 0;
+            text-align: center;
+            padding-top: 30%;
+            text-transform: uppercase;
+        }
+
+
+
+        .ball5:hover{
+            border-color: #ffe5a8;
+            height: 200px;
+            width: 200px;
+        }
+
+        .ball5:hover img{
+            filter: blur(5px);
+        }
+
+        .ball5:hover span{
+            opacity: 1;
+            color: #f1ff9e;
+        }
+
+        .ball6{
+            animation: float 4.7s ease-in-out infinite;
+            height: 75px;
+            width: 75px;
+            border: 10px solid #000000;
+            border-radius: 50%;
+            position:relative;
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+
+            top: -400px;
+            
+            z-index: -990;
+        }
+
+        .ball6>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: .5;
+        }
+
+
+
+        .ball6:hover{
+            border-color: #d7b3e3;
+            height: 150px;
+            width: 150px;
+        }
+        
+
+
+
+        .shadow1{
+            background:#b490b27c;
+            width: 150px;
+            height: 40px;
+            top: 80%;
+            animation: expand 4.5s infinite;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+
+
+
+
+        @keyframes float{
+            0%{
+                transform: translatey(0px) rotate(-10deg);
+            }
+
+            50% {
+                transform: translatey(-80px) rotate(10deg);
+            }
+
+            100% {
+                transform: translatey(0px) rotate(-10deg);
+            }
+        }
+
+        @keyframes expand {
+            0%,
+            100%{
+                transform: scale(0.5);
+            }
+
+            50%{
+                transform: scale(1);
+            }
+        }
+
+        
+
+
+
+    </style>
+</head>
+
+
+<body id="boddy">
+    
+
+    <div class="shell">
+        <div class="box">
+            <div class="ball1">
+                <img src="./images/5b7a593a0d57da98521cd90fc1ffad7.png">
+            </div>
+            <div class="shadow1"></div>
+        </div>
+
+        <div class="box">
+            <div class="ball2" onclick="jumpto1()">
+                <img src="./images/1c.png">
+                <span>ABOUT<br>THIS<br>WEB</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="ball3" onclick="jumpto2()">
+                <img src="./images/14c.png">
+                <span>GALLERY</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="ball4" onclick="jumpto3()">
+                <img src="./images/28c.png">
+                <span>CHOOSE<br>MUSIC</span>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="ball5" onclick="jumpto4()">
+                <img src="./images/20c.png">
+                <span>INTRODUCE</span>
+            </div>
+        </div>
+
+        <div class="box">
+            
+
+            <div class="ball6" onclick="audios()">
+                <img id="pic" src="./images/3a.jpg">
+                <audio id="audio" src="./audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3" loop="loop"></audio>
+            </div>
+
+            <script>
+                const params = new URLSearchParams(location.search); 
+                var backing = document.getElementById("boddy");
+                var indx = params.get('song');
+                
+                var music = document.getElementById("audio");
+                if(params.get('song')===null){
+                    indx = 1;
+                    indx++;
+                    indx--;
+                } 
+                else {
+                    indx++;
+                    indx--;
+                    switch(indx){
+                    case 1:
+                        music.src="./audio/MyGO!!!!! - 春日影 (MyGO!!!!! ver.).mp3";
+                        backing.style.backgroundImage = "url('./images/1b.jpg')";
+                        break;
+                    case 2:
+                        music.src="./audio/ずっと真夜中でいいのに。 - あいつら全員同窓会.mp3";
+                        backing.style.backgroundImage = "url('./images/2b.png')";
+                        break;
+                    case 3:
+                        music.src="./audio/ずっと真夜中でいいのに。 - ミラーチューン.mp3";
+                        backing.style.backgroundImage = "url('./images/2b.png')";
+                        break;
+                    case 4:
+                        music.src="./audio/ずっと真夜中でいいのに。 - 海馬成長痛.mp3";
+                        backing.style.backgroundImage = "url('./images/2b.png')";
+                        break;
+                    case 5:
+                        music.src="./audio/結束バンド - 星座になれたら.mp3";
+                        backing.style.backgroundImage = "url('./images/3b.jpg')";
+                        break;
+                    case 6:
+                        music.src="./audio/結束バンド - ギターと孤独と蒼い惑星-Anime Ver.-.mp3";
+                        backing.style.backgroundImage = "url('./images/3b.jpg')";
+                        break;
+                    case 7:
+                        music.src="./audio/トゲナシトゲアリ - 雑踏、僕らの街.mp3";
+                        backing.style.backgroundImage = "url('./images/4b.jpg')";
+                        break;
+                    case 8:
+                        music.src="./audio/トゲナシトゲアリ - 爆ぜて咲く.mp3";
+                        backing.style.backgroundImage = "url('./images/4b.jpg')";
+                        break;
+                    case 9:
+                        music.src="./audio/万能青年旅店 - 秦皇岛.mp3";
+                        break;
+                    case 10:
+                        music.src="./audio/草东没有派对 - 但.mp3";
+                        break;
+                    
+                    }
+                    document.getElementById("pic").src="./images/68d703bd8ba75b02a158cb2f4a1fe05.png";
+                    
+                }
+                music.play();
+                
+                
+                function audios(){
+                    
+
+                    if(music.paused){
+                        music.play();
+                        document.getElementById("pic").src="./images/68d703bd8ba75b02a158cb2f4a1fe05.png";
+                    }
+                    else{
+                        music.pause();
+                        document.getElementById("pic").src="./images/3a.jpg";
+                    }
+                }
+
+
+
+                
+
+                function jumpto1(){
+                    location.href = "./web/1.htm?song="+indx;
+                }
+                function jumpto2(){
+                    location.href = "./web/2.htm?song="+indx;
+                }
+                function jumpto3(){
+                    location.href = "./web/3.htm?song="+indx;
+                }
+                function jumpto4(){
+                    location.href = "./web/4.htm?song="+indx;
+                }
+
+            </script>
+        </div>
+    </div>
+
+    
+</body>
+    
+
+
+</html>
