@@ -69,6 +69,7 @@
             .shell{
                 height: 100vh;
                 overflow-x: hidden;
+                overflow-y: hidden;
                 perspective: 3px;
             }
 
@@ -113,7 +114,7 @@
     <header>
         <ul>
             <li><span>ABOUT THIS WEB</span></li>
-            <li><a id="tohome" href="../index.htm">HOME</a></li>
+            <li><a id="tohome" href="../index.html">HOME</a></li>
             <li><a id="topicture" href="./2.htm">GALLERY</a></li>
             <li><a id="tomusic" href="./3.htm">CHOOSE MUSIC</a></li>
             <li><a id="to4" href="./4.htm">INTRODUCE</a></li>
@@ -244,7 +245,7 @@
                     }
                 }
                 music.play();
-                home.href = "../index.htm?song="+indx;
+                home.href = "../index.html?song="+indx;
                 intro.href = "./4.htm?song="+indx;
                 picture.href = "./2.htm?song="+indx;
                 tomusic.href = "./3.htm?song="+indx;  
