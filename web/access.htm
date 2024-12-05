@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>502の集合地</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .container{
+            display: flex;
+            height: 700px;
+            width: 90%;
+            align-items: center;
+        }
+
+        span{
+            z-index: 20;
+            color: #bdf1ff;
+            position:absolute;
+            left: 0%;
+            top: 0%;
+            font-size: 60PX;
+        }
+
+        h1{
+            z-index: 20;
+            color: #fff;
+            position:absolute;
+            left: 40%;
+            top: 0%;
+        }
+
+        .image{
+            flex: 1;
+            overflow: hidden;
+            transition: .5s;
+            margin: 0 20px;
+            
+        }
+
+        .image:nth-child(1){
+            position:absolute;
+            right: 55%;
+            top: 40%;
+            z-index: 1;
+        }
+        .image:nth-child(2){
+            position:absolute;
+            right: 45%;
+            top: 15%;
+            z-index: 0;
+        }
+        .image:nth-child(3){
+            position:absolute;
+            right: 45%;
+            top: 55%;
+            z-index: 5;
+        }
+        .image:nth-child(4){
+            position:absolute;
+            right: 35%;
+            top: 40%;
+            z-index: 1;
+        }
+
+
+
+        .container:hover .image{
+            filter: blur(10px) grayscale(1);
+        }
+        .container:hover .image:hover{
+            filter: blur(0) grayscale(0);
+            scale: 1.5;
+            z-index: 10;
+        }
+
+
+
+
+        header a{
+                text-decoration: none;
+                color: #fff;
+                border-radius: 20px;
+                z-index: 20;
+                color: #fff;
+                position:absolute;
+                text-align: center;
+                justify-content: center;
+                left: 90%;
+                top: 0%;
+                font-size: 30px;
+        }
+
+
+    </style>
+</head>
+<header>
+
+    <a href="https://herbstwind.github.io/classweb">回到班级网页</a></li>
+    
+</header>
+<body>
+    <div class="container">
+        <img class="image" src="../images/1d.png" width="20%" alt="yty" onclick="jumptoy()" onmouseover="showy()">
+        <img class="image" src="../images/2D.png" width="15%" alt="wl" onclick="jumptow()" onmouseover="showw()">
+        <img class="image" src="../images/3d.png" width="15%" alt="wch" onclick="jumptoq()" onmouseover="showq()">
+        <img class="image" src="../images/4d.png" width="15%" alt="lze" onclick="jumptol()" onmouseover="showl()">
+        
+    </div>
+    <span>东十二502宿舍</span>
+    <h1 id="txt" ></h1>
+
+    <script>
+        function jumptoy(){
+            location.href="https://sakudahajime.github.io/";
+        }
+        function jumptow(){
+            location.href="https://vl-502.github.io/";
+        }
+        function jumptoq(){
+            location.href="https://herbstwind.github.io/";
+        }
+        function jumptol(){
+            location.href="https://zeen-liang.github.io/";
+        }
+
+        function showy(){
+            document.getElementById("txt").textContent="跳转至尹天驿的网站";
+        }
+        function showw(){
+            document.getElementById("txt").textContent="跳转至文梁的网站";
+        }
+        function showq(){
+            document.getElementById("txt").textContent="跳转至王晨昊的网站";
+        }
+        function showl(){
+            document.getElementById("txt").textContent="跳转至梁泽恩的网站";
+        }
+    </script>
+
+</body>
+</html>
