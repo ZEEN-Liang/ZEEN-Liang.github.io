@@ -500,6 +500,8 @@
             height: 150px;
             width: 150px;
         }
+
+        
         
 
 
@@ -514,6 +516,94 @@
             border-radius: 50%;
         }
 
+        .ball7{
+            height: 100px;
+            width: 100px;
+            border: 10px solid #9ce1ff;
+            border-radius: 50%;
+            position: relative;
+
+            box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+
+            background-size: contain;
+            background-position: center;
+            /*
+            background: radial-gradient(circle at 80% 30%,
+                    rgb(255, 255, 255) 5px,
+                    aqua 10%,
+                    rgb(100, 100, 255) 80%,
+                    rgb(130, 255, 255) 90%
+            );*/
+            /*
+            box-shadow: 
+                        inset 0 0 20px #ffffff,
+                        inset 10px 0 46px #eaf5fc,
+                        inset 40px 0 60px #ec99ff,
+                        inset -20px -60px 100px #fde9ea,
+                        inset 0 50px 140px #fde9ea,
+                        0 0 90px #fff;
+            */
+
+            overflow: hidden;
+            transition: .5s;
+            top: 70%;
+
+
+
+            
+            z-index: -990;
+        }
+
+        .ball7>img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            transition: .5;
+            z-index: 1;
+
+        }
+
+
+        .ball7>span{
+            
+            box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            font-size: 20px;
+            font-weight: 800;         
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            height: 90%;
+            width: 100%;
+
+            top:0;
+            left: 0;
+            text-align: center;
+            padding-top: 30%;
+            text-transform: uppercase;
+        }
+
+
+
+        .ball7:hover{
+            border-color: #ffe5a8;
+            height: 200px;
+            width: 200px;
+        }
+
+        .ball7:hover img{
+            filter: blur(5px);
+        }
+
+        .ball7:hover span{
+            opacity: 1;
+            color: #f1ff9e;
+        }
 
 
 
@@ -590,6 +680,16 @@
                 <span>INTRODUCE</span>
             </div>
         </div>
+
+        <div class="box">
+
+            <div class="ball7" onclick="jumpto5()">
+                <img src="./images/10c.png">
+                <span>返回宿舍页</span>
+            </div>
+        </div>
+
+        
 
         <div class="box">
             
@@ -688,6 +788,9 @@
                 }
                 function jumpto4(){
                     location.href = "./web/4.htm?song="+indx;
+                }
+                function jumpto5(){
+                    location.href = "./web/access.htm";
                 }
 
             </script>
